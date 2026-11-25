@@ -407,7 +407,7 @@ function renderEl(e, mode){
     if (mode === 'thumb'){
       d.innerHTML = `<div style="height:100%;background:#f7f2f4;color:#4f2635;border-radius:22px;padding:50px;display:flex;flex-direction:column;justify-content:center"><strong style="font-size:64px">Prototipo interactivo</strong><span style="font-size:36px;margin-top:25px">${esc(p.label || scene)}</span><span style="font-size:26px;margin-top:30px">Se puede probar en modo Presentar</span></div>`;
     } else {
-      const u = new URL('prototipos.html',location.href); u.searchParams.set('scene',scene); u.searchParams.set('embed','1');
+      const u = new URL('prototipos.html',location.href); u.searchParams.set('scene',scene); u.searchParams.set('embed','1'); u.searchParams.set('v','20261125-simple');
       if (['slots','response','handoff'].includes(p.view)) u.searchParams.set('view',p.view);
       const frame = document.createElement('iframe'); frame.src = u.href; frame.title = p.label || 'Prototipo académico interactivo';
       frame.setAttribute('sandbox','allow-scripts allow-downloads'); frame.loading = 'lazy';
