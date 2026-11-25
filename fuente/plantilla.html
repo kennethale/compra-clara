@@ -401,6 +401,19 @@ function renderEl(e, mode){
     d.innerHTML = `<div class="ic" style="background:${p.bg==='none'?'transparent':p.bg};color:${p.color}">${IC[p.name]||''}</div>`;
   } else if (e.type === 'search'){
     d.innerHTML = `<div class="srch glass" style="font-size:${p.size}px">${IC.search}<span class="st">${mode==='present'?'':esc(p.text)}</span><i class="cr"></i></div>`;
+  } else if (e.type === 'prototype'){
+    const scenes = ['contact','changes','receipt'];
+    const scene = scenes.includes(p.scene) ? p.scene : 'contact';
+    if (mode === 'thumb'){
+      d.innerHTML = `<div style="height:100%;background:#f7f2f4;color:#4f2635;border-radius:22px;padding:50px;display:flex;flex-direction:column;justify-content:center"><strong style="font-size:64px">Prototipo interactivo</strong><span style="font-size:36px;margin-top:25px">${esc(p.label || scene)}</span><span style="font-size:26px;margin-top:30px">Se puede probar en modo Presentar</span></div>`;
+    } else {
+      const u = new URL('prototipos.html',location.href); u.searchParams.set('scene',scene); u.searchParams.set('embed','1');
+      if (['slots','response','handoff'].includes(p.view)) u.searchParams.set('view',p.view);
+      const frame = document.createElement('iframe'); frame.src = u.href; frame.title = p.label || 'Prototipo académico interactivo';
+      frame.setAttribute('sandbox','allow-scripts allow-downloads'); frame.loading = 'lazy';
+      const scale = 1.15; Object.assign(frame.style,{width:(e.w/scale)+'px',height:(e.h/scale)+'px',border:'0',borderRadius:'18px',background:'#f5f1f1',transform:`scale(${scale})`,transformOrigin:'top left',pointerEvents:mode==='present'?'auto':'none'});
+      d.appendChild(frame);
+    }
   } else if (e.type === 'flip'){
     d.innerHTML = `<div class="flip${e._open?' open':''}"><div class="in"><div class="fa glass"><div class="t1">${p.t1}</div><div class="t2">${p.t2}</div></div><div class="fb" style="background:${p.back}"><div class="q" style="font-size:110px;line-height:.6;opacity:.4">“</div><div class="q">${p.q}</div><div class="s">${p.s}</div></div></div></div>`;
   }
@@ -529,7 +542,7 @@ function renderPanel(){
     R.innerHTML = `<h3>${selIds.length} elementos</h3>${alignBtns()}<div class="btns"><button id="bDup">${IC.copy} Duplicar</button><button id="bDel">${IC.trash} Eliminar</button></div>`; bindPanel(); return;
   }
   const e = elById(selIds[0]), p = e.p; let h = '';
-  const typeName = {text:'Texto',image:'Imagen',shape:'Forma',icon:'Ícono',search:'Buscador',flip:'Tarjeta que gira',counter:'Contador'}[e.type];
+  const typeName = {text:'Texto',image:'Imagen',shape:'Forma',icon:'Ícono',search:'Buscador',flip:'Tarjeta que gira',counter:'Contador',prototype:'Prototipo interactivo'}[e.type];
   h += `<h3>${typeName}</h3>`;
   if (e.type === 'text' || e.type === 'counter'){
     if (e.type === 'counter') h += `<div class="row three">${fld('Valor', num('p.value', p.value, .1))}${fld('Decimales', num('p.dec', p.dec))}${fld('Prefijo', `<input data-k="p.pre" value="${esc(p.pre)}">`)}</div><div class="row">${fld('Sufijo', `<input data-k="p.suf" value="${esc(p.suf)}">`)}</div>`;
@@ -777,3 +790,4 @@ function setupMode(){
 })();
 </script>
 </body></html>
+
