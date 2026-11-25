@@ -1,0 +1,36 @@
+/* Tokens visuales de sv.siman.com medidos el 25-nov-2026 (escritorio 1440 px y móvil 390 px).
+   Uso académico — proyecto Compra Clara. No es un manual oficial de SIMAN. */
+:root{
+  /* Marca */
+  --siman-rojo:#D02D37;        /* botón "Agregar al carrito", subir arriba (--siman) */
+  --siman-burdeos:#A83338;     /* precio, % descuento, enlaces "Ver más" (--oldSiman) */
+  --siman-burdeos-logo:#A93439;/* "S" del isotipo */
+  --credisiman-azul:#03499A;   /* solo para Credisiman */
+
+  /* Interfaz */
+  --ui-encabezado:#1F1F1F;     /* franja superior y pie */
+  --ui-menu:#4D4D4D;           /* barra de categorías */
+  --ui-tinta:#1F1F1F;          /* texto principal */
+  --ui-titulo-info:#3F3F40;    /* títulos de páginas de ayuda */
+  --ui-texto-2:#646464;        /* "Vendido por", textos secundarios */
+  --ui-tachado:#BEBEBE;        /* precio anterior */
+  --ui-enlace-pie:#D3D3D3;     /* enlaces del pie, borde de íconos */
+  --ui-claro-menu:#F1F1F1;     /* texto del menú */
+  --ui-fondo:#F9F9F9;          /* fondo de página, etiqueta de cuotas */
+  --ui-tarjeta:#FFFFFF;
+  --ui-dato:#F2F8FB;           /* cajas "Vista rápida" */
+  --ui-verde-cuotas:#316C0C;   /* "Hasta 24 cuotas" */
+  --ui-borde:#E5E7EB;
+
+  /* Formas */
+  --radio-panel:16px;  /* filtros, bloques */
+  --radio-tarjeta:8px; /* tarjeta de producto, cajas de dato */
+  --radio-pildora:100px; /* botones principales, etiquetas */
+  --sombra-menu:0 2px 2px rgba(31,31,31,.08);
+  --sombra-boton:0 2px 4px rgba(31,31,31,.08);
+
+  /* Tipografía (la web carga Roboto 100/400/500/700/900) */
+  --fuente:"Roboto",Arial,sans-serif;
+  --t-titulo-pagina:27px/700; --t-titulo-seccion:24px/700; --t-nombre:16px/500; --t-precio:21px/500;
+  --t-cuerpo:16px/400; --t-meta:12px/400; --t-etiqueta:11px/700;
+}

@@ -1,0 +1,7 @@
+index-local.html
+node_modules/
+.DS_Store
+datos/focus-group/*
+datos/encuesta/*
+!datos/focus-group/.gitkeep
+!datos/encuesta/.gitkeep
